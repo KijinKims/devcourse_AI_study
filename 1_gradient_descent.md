@@ -1,6 +1,4 @@
-```python
 # 3.1. Linear regression and Data preparation
-```
 
 ```python
 from sklearn.datasets import load_diabetes
@@ -32,17 +30,16 @@ x = diabetes.data[:, 2]
 y = diabetes.target
 ```
 
-```python
 # 3.2 Graident discent
-```
 
 ```python
 w = 1.0
 b = 1.0
 ```
 
+predicted value for first sample with initial w and b
+
 ```python
-# predicted value for first sample with initial w and b
 y_hat = x[0] * w + b
 print(y_hat)
 ```
@@ -103,15 +100,12 @@ print(b_new)
 draw_point_line(0,0,w,b_new)
 ```
 
-```python
-# Two Problems: 
-# 1. it gets closer to the point too slowly
-# 2. it will only increse even after meeting the point
-```
+Two Problems: 
+1. it gets closer to the point too slowly
+2. it will only increse even after meeting the point
 
-```python
-# Error Backpropagation
-```
+
+## Error Backpropagation
 
 ```python
 err = y[0] - y_hat
@@ -124,8 +118,9 @@ print(w_new, b_new)
 draw_point_line(0,0,w_new,b_new)
 ```
 
+adjust params with the second data point
+
 ```python
-# adjust params with the second data point
 y_hat = x[1] * w_new + b_new
 err = y[1] - y_hat
 w_rate = x[1]
@@ -138,8 +133,9 @@ print(w_new, b_new)
 draw_point_line(0, 1, w_new, b_new)
 ```
 
+iterate over all data points
+
 ```python
-# iterate over all data points
 for x_i, y_i in zip(x,y):
     y_hat = x_i * w + b
     err = y_i - y_hat
@@ -152,8 +148,9 @@ for x_i, y_i in zip(x,y):
 draw_point_line(0, len(x) + 1, w, b)
 ```
 
+iterate whole process several times: epoch
+
 ```python
-# iterate whole process several times: epoch
 for i in range(1, 100):
     for x_i, y_i in zip(x,y):
         y_hat = x_i * w + b
@@ -167,8 +164,9 @@ for i in range(1, 100):
 draw_point_line(0, len(x) + 1, w, b)
 ```
 
+predict for new input
+
 ```python
-# predict for new input
 x_new = 0.18
 y_pred = x_new * w + b
 print(y_pred)
